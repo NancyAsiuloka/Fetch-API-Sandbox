@@ -9,17 +9,27 @@
 <body>
     <button id="getText">Get Text</button>
 
+    <div id="output"></div>
+
     <script>
         document.getElementById('getText').addEventListener('click', getText);
 
         function getText(){
+            // fetch('sample.txt')
+            // .then(function(res){
+            //     return res.text();
+            // })
+            // .then(function(data){
+            //     console.log(data);
+            // });
+
             fetch('sample.txt')
-            .then(function(res){
-                return res.text();
+            .then((res) => res.text())
+            .then((data) => {
+                document.getElementById('output')
+                .innerHTML = data;
             })
-            .then(function(data){
-                console.log(data);
-            });
+            .catch((err) => console.log(err))
         }
     </script>
 </body>
